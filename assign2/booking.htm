@@ -33,58 +33,58 @@
 
 		<div class="container">
 			<h1>Taxi Booking System</h1>
-			<form id="postBookingForm">
+			<form id="postBookingForm" action="none">
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Customer Name:</label>
-					<input type="text" name="name" id="name" class="input-wide form-input" required><br/>
+					<input type="text" name="name" id="name" class="input-wide form-input"/><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Contact Phone:</label> 
-					<input type="text" name="phone" class="form-input" id="phone" required><br/>
+					<input type="text" name="phone" class="form-input" id="phone" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label">Unit Number:</label> 
-					<input type="text" name="unit" class="form-input" id="unit"><br/>
+					<input type="text" name="unit" class="form-input" id="unit"/><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Street Number:</label>
-					<input type="text" name="streetNumber" class="form-input" id="streetNumber" required><br/>
+					<input type="text" name="streetNumber" class="form-input" id="streetNumber" /><br/>
 				</div>
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Street Name:</label>
-					<input type="text" name="streetName" class="input-wide form-input" id="streetName" required><br/>
+					<input type="text" name="streetName" class="input-wide form-input" id="streetName" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Suburb:</label>
-					<input type="text" name="pickupSuburb" class="input-wide form-input" id="pickupSuburb" required><br/>
+					<input type="text" name="pickupSuburb" class="input-wide form-input" id="pickupSuburb" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Destination Suburb:</label>
-					<input type="text" name="destinationSuburb" class="input-wide form-input" id="destinationSuburb" required><br/>
+					<input type="text" name="destinationSuburb" class="input-wide form-input" id="destinationSuburb" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Pick-up time:</label>
-					<input type="text" name="time" class="form-input" id="time" required><br/>
+					<input type="text" name="time" class="form-input" id="time" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Pick-up date:</label>
-					<input type="text" name="date" class="form-input" id="date" required><br/>
+					<input type="text" name="date" class="form-input" id="date" /><br/>
 				</div>
 
 				<div id="responseTarget">
 				</div>
 
 				<div class="pull-right align-form-buttons">
-					<input type="button" value="Book" class="display-inline" onclick="submitBooking()">
-					<input type="reset" value="Reset" onclick="resetWarnings()" class="display-inline">
+					<input type="button" value="Book" class="display-inline" onclick="submitBooking()"/>
+					<input type="reset" value="Reset" onclick="resetWarnings()" class="display-inline"/>
 				</div>
 			</form>
 
