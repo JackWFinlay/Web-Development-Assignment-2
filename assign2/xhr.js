@@ -1,5 +1,4 @@
-// file xhr.js
- function createRequest() {
+function createRequest() {
     var xhr = false;  
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();
@@ -8,4 +7,4 @@
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
     return xhr;
-} // end function createRequest()
+}

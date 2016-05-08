@@ -1,34 +1,31 @@
-// file simpleajax.js
-// function getData(dataSource, divID, aName, aPwd) {
-// 	var xhr = createRequest();
-// 	if(xhr) {
-// 		var obj = document.getElementById(divID);
-// 		var requestbody ="name="+encodeURIComponent(aName)+"&pwd="+encodeURIComponent(aPwd);
-// 		xhr.open("POST", dataSource, true);
-// 		xhr.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
+// Jack Finlay 1399273 - 
 
-// 		xhr.onreadystatechange = function() {
-// 			//alert(xhr.readyState); // to let us see the state of the computation
-// 			if (xhr.readyState == 4 && xhr.status == 200) {
-// 			obj.innerHTML = xhr.responseText;
-// 			} // end if
-// 		} // end anonymous call-back function
-// 		xhr.send(requestbody);
-// 	} // end if
-// } // end function getData() 
+function getData(dataSource, responseTarget, name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
+	var xhr = createRequest();
+	if(xhr) {
+		var responseTargetDiv = document.getElementById(responseTarget);
+		var requestbody ="name=" 			   + encodeURIComponent(name)
+						+"&phone=" 			   + encodeURIComponent(phone)
+						+"&unit="              + encodeURIComponent(unit)
+						+"&streetNumber="      + encodeURIComponent(streetNumber)
+						+"&streetName="        + encodeURIComponent(streetName)
+						+"&pickupSuburb="      + encodeURIComponent(pickupSuburb)
+						+"&destinationSuburb=" + encodeURIComponent(destinationSuburb)
+						+"&time=" 			   + encodeURIComponent(time)
+						+"&date=" 			   + encodeURIComponent(date);
+		xhr.open("POST", dataSource, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
 
-function submitBooking() {
-
-	document.getElementById('responseTarget').innerHTML = "";
-	validate();
-
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+			responseTargetDiv.innerHTML = xhr.responseText;
+			} 
+		}
+		xhr.send(requestbody);
+	}
 }
 
-function validate() {
-
-	var valid = true;
-
-	// get input objects
+function submitBooking() {
 	var name = document.getElementById("name");
 	var phone = document.getElementById("phone");
 	var unit = document.getElementById("unit");
@@ -38,6 +35,31 @@ function validate() {
 	var destinationSuburb = document.getElementById("destinationSuburb");
 	var time = document.getElementById("time");
 	var date = document.getElementById("date");
+
+	document.getElementById('responseTarget').innerHTML = "";
+	if (!validate(name, phone, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date)) {
+		return;
+	}
+
+	getData("bookingProcess.php"
+			, "responseTarget"
+			, name.value
+			, phone.value
+			, unit.value
+			, streetNumber.value
+			, streetName.value
+			, pickupSuburb.value
+			, destinationSuburb.value
+			, time.value
+			, date.value
+			);
+
+
+}
+
+function validate(name, phone, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
+
+	var valid = true;
 
 	if (name.value.length <= 0){ // Check if input has any value.
 		valid = false;
@@ -61,7 +83,8 @@ function validate() {
 	}
 
 	if(streetNumber.value.length > 0 ) {
-		if (!Number.isInteger(streetNumber.value)) {
+		var re = /^\d+$/;
+		if (!re.test(streetNumber.value)) {
 			valid = false;
 			streetNumber.classList.add("input-invalid");
 		} else {
@@ -113,15 +136,15 @@ function validate() {
 			valid = false;
 			date.classList.add("input-invalid");
 		} else {
-			var split = s.split('/');
+			var split = date.value.split('/');
 			var year = split[2], month  = split[1], day = split[0];
   			var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 			
 			if ( (!(year % 4) && year % 100) || !(year % 400)) {
-				daysInMonth[1] = 29; // It is a leap year.
+				daysInMonth[1] = 29; // It is a leap year so February has 29 days.
 			}
 
-			if(day > daysInMonth[--month]){
+			if(day > daysInMonth[month - 1]){
 				valid = false;
 				date.classList.add("input-invalid");
 			} else {
