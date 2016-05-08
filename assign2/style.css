@@ -1,0 +1,127 @@
+.align-form-buttons {
+	margin-right: 42px;
+}
+
+.container {
+	width: 550px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+
+}
+
+.display-inline {
+	display: inline;
+}
+
+.display-inline-block {
+	display: inline-block;
+}
+
+.form-group {
+	line-height: 24px;
+	margin-bottom: 5px;
+}
+
+.form-input:hover {
+	border-color: rgb(0, 100, 255);
+}
+
+.form-label {
+	display: inline-block;
+	width: 135px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.input-wide {
+	width: 350px;
+}
+
+.inner-nav {
+	margin: 0 auto;
+	width: 550px;
+	height: 50px;
+}
+
+.inner-nav ul {
+	margin: 0 auto 0 20px;
+	-moz-padding-start: 0px;    
+	-webkit-padding-start: 0px; 
+	padding-left: 0px; /* removes annoying user-agent stylesheet ul padding */ 
+	display: inline-block;
+}
+
+.inner-nav ul li {
+	display: inline-block;
+}
+
+.inner-nav ul li a {
+	font-weight: bold;
+	color: white;
+	padding: 15px 15px 15px 0px;
+	display: inline-block;
+}
+
+.inner-nav ul li a:hover {
+	color: gray;
+}
+
+.inner-nav p {
+	margin: 7px 0px;
+	color: white;
+	font-size: 30px;
+	display: inline-block;
+}
+
+.nav {
+	background: black;
+	height: 50px;
+}
+
+.pull-right {
+	text-align: right;
+	float: right;
+}
+
+.required-asterisk {
+	color: red;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: "Helvetica neue",Helvetica,Arial,sans-serif; 
+	margin: 0px;
+}
+
+input[type="text"] {	
+	height: 20px;
+	border: 1px #ccc solid;
+	font-size: 14px;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+	-webkit-appearance: none;
+	height: 24px;
+	border: 1px #ccc solid;
+	font-size: 14px;
+	border-radius: 4px;
+	background: white;
+
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+	background: #ccc;
+}
+
+label {
+	font-weight: bold;
+	font-size: 12px;
+}

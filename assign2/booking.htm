@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- /Stylesheets -->
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="Web Development Assignment 2"/>
+	<meta name="keywords" content="HTML, CSS, JavaScript, PHP"/>
+	<meta name="author" content="Jack Witbrock Finlay"/>
+	<!-- /Meta -->
+
+
+  	<title>CabsOnline - Booking</title>
+</head>
+
+<body>
+	<div id="nav" class="nav">
+		<div id="inner-nav" class="inner-nav">
+			<p>CabsOnline</p>
+			<ul>
+				<li><a href="booking.htm">Booking</a></li>
+				<li><a href="admin.htm">Admin</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container">
+			<h1>Taxi Booking System</h1>
+			<form action="bookingprocess.php" method="post" id="postBookingForm">
+
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Customer Name:</label>
+					<input type="text" name="name" class="input-wide form-input" required><br/>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Contact Phone:</label> 
+					<input type="text" name="phone" class="form-input" required><br/>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Unit Number:</label> 
+					<input type="text" name="unit" class="form-input" ><br/>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Street Number:</label>
+					<input type="text" name="streetNumber" class="form-input" required><br/>
+				</div>
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Street Name:</label>
+					<input type="text" name="streetName" class="input-wide form-input" required><br/>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Suburb:</label>
+					<input type="text" name="pickUpSuburb" class="input-wide form-input" required><br/>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label"><span class="required-asterisk">*</span>Destination Suburb:</label>
+					<input type="text" name="destinationSuburb" class="input-wide form-input" required><br/>
+				</div>
+
+				<div class="pull-right align-form-buttons">
+					<input type="submit" value="Post" class="display-inline">
+					<input type="reset" value="Reset" class="display-inline">
+				</div>
+				</div>
+			</form>
+
+</body>
+
+</html>
