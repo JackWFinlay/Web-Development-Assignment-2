@@ -38,7 +38,7 @@
 		<div class="container">
 			<h1>Taxi Booking System</h1>
 
-			<form id="postBookingForm" action="none">
+			<form id="bookingForm" action="none">
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Customer Name:</label>
@@ -84,15 +84,19 @@
 					<input type="text" name="date" class="form-input" id="date" placeholder="DD/MM/YYYY" /><br/>
 				</div>
 
-				<div id="responseTarget">
-				</div>
+				
 
 				<div class="pull-right align-form-buttons">
-					<input type="button" value="Book" class="display-inline" onclick="submitBooking()"/>
+					<input type="button" value="Book" class="display-inline" id="submit" onclick="submitBooking()"/>
 					<input type="reset" value="Reset" onclick="resetWarnings()" class="display-inline"/>
 				</div>
 			</form>
-	
+			
+			
+
+		</div>
+
+		<div id="responseTarget" class="container">
 		</div>
 				
 	</body>

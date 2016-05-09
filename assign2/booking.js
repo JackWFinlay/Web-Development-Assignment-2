@@ -14,11 +14,12 @@ function getData(dataSource, responseTarget, name, phone, unit, streetNumber, st
 						+"&time=" 			   + encodeURIComponent(time)
 						+"&date=" 			   + encodeURIComponent(date);
 		xhr.open("POST", dataSource, true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-			responseTargetDiv.innerHTML = xhr.responseText;
+				responseTargetDiv.innerHTML = xhr.responseText;
+				document.getElementById("bookingForm").reset(); // Reset the form on success.
 			} 
 		}
 		xhr.send(requestbody);
@@ -26,6 +27,8 @@ function getData(dataSource, responseTarget, name, phone, unit, streetNumber, st
 }
 
 function submitBooking() {
+	document.getElementById("submit").disabled = true; // Disable submit button, so it doesn't fire multiple times.
+
 	var name = document.getElementById("name");
 	var phone = document.getElementById("phone");
 	var unit = document.getElementById("unit");
@@ -37,29 +40,32 @@ function submitBooking() {
 	var date = document.getElementById("date");
 
 	document.getElementById('responseTarget').innerHTML = "";
-	if (!validate(name, phone, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date)) {
-		return;
+	if (!validate(name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date)) {
+		document.getElementById("submit").disabled = false; // Re-enable the sumbit button.
+		return; // Skip the rest of the function.
 	}
 
 	getData("bookingProcess.php"
-			, "responseTarget"
-			, name.value
-			, phone.value
-			, unit.value
-			, streetNumber.value
-			, streetName.value
-			, pickupSuburb.value
-			, destinationSuburb.value
-			, time.value
-			, date.value
+			,"responseTarget"
+			,name.value
+			,phone.value
+			,unit.value
+			,streetNumber.value
+			,streetName.value
+			,pickupSuburb.value
+			,destinationSuburb.value
+			,time.value
+			,date.value
 			);
 
-
+	document.getElementById("submit").disabled = false; // Re-enable the sumbit button.
 }
 
-function validate(name, phone, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
+function validate(name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
 
 	var valid = true;
+	var timeValid = true;
+	var dateValid = true;
 
 	if (name.value.length <= 0){ // Check if input has any value.
 		valid = false;
@@ -69,7 +75,7 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 	}
 
 	if (phone.value.length > 0){
-		var re = /^[\+?]\d{9,}$/; //Check if phone number is valid. Can contain "+" symbol for international numbers.
+		var re = /^\+?\d{9,}$/; //Check if phone number is valid. Can contain "+" symbol for international numbers.
 		if (!re.test(phone.value)){
 			valid = false;
 			phone.classList.add("input-invalid");
@@ -81,6 +87,16 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 		valid = false;
 		phone.classList.add("input-invalid");
 	}
+
+	if (unit.value.length > 0) {
+		var re = /^\d+$/;
+		if (!re.test(unit.value)) {
+			valid = false;
+			unit.classList.add("input-invalid");
+		} else {
+			unit.classList.remove("input-invalid");
+		}
+	} // Not else on this one as Unit is optional.
 
 	if(streetNumber.value.length > 0 ) {
 		var re = /^\d+$/;
@@ -120,6 +136,7 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 		var re = /^([0-1]?\d|[2][0-3]):[0-5]\d$/; 
 		if (!re.test(time.value)){
 			valid = false;
+			timeValid = false;
 			time.classList.add("input-invalid");
 		} else {
 			time.classList.remove("input-invalid");
@@ -127,6 +144,7 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 		
 	} else {
 		valid = false;
+		timeValid = false;
 		time.classList.add("input-invalid");
 	}
 
@@ -146,6 +164,7 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 
 			if(day > daysInMonth[month - 1]){
 				valid = false;
+				dateValid = false;
 				date.classList.add("input-invalid");
 			} else {
 				date.classList.remove("input-invalid");
@@ -154,15 +173,29 @@ function validate(name, phone, streetNumber, streetName, pickupSuburb, destinati
 		
 	} else {
 		valid = false;
+		dateValid = false
 		date.classList.add("input-invalid");
 	}
 
+	if (timeValid && dateValid) {
+		if (Date.parse(date.value + " " + time.value + ":00") < Date.now()){ // Check date is in future or now
+			valid = false;
+			date.classList.add("input-invalid");
+			time.classList.add("input-invalid");
+			document.getElementById('responseTarget').innerHTML = "<p class=\"warning-text\">Date and time cannot be in the past.</p>";
+		} else {
+			date.classList.remove("input-invalid");
+			time.classList.remove("input-invalid");
+		}
+	}
+		
 	if (!valid) {
-		document.getElementById('responseTarget').innerHTML = "<p class=\"warning-text\">Invalid form entry.</p>";
+		document.getElementById('responseTarget').innerHTML += "<p class=\"warning-text\">Invalid form entry.</p>";
 	} 
-
+	
 	return valid;
 }
+
 
 function resetWarnings() {
 	
