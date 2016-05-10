@@ -13,13 +13,18 @@
 	<meta name="author" content="Jack Witbrock Finlay"/>
 	<!-- /Meta -->
 
+	<!-- Scripts -->
+	<script src="admin.js" type="text/javascript"></script>
+	<script src="xhr.js" type="text/javascript"></script>
+	<!-- /Scripts -->
+
   	<title>CabsOnline - Admin</title>
 </head>
 
 <body>
 	<div id="nav" class="nav">
 		<div id="inner-nav" class="inner-nav">
-			<p>CabsOnline</p>
+			<p class="title">CabsOnline</p>
 			<ul>
 				<li><a href="booking.htm">Booking</a></li>
 				<li><a href="admin.htm">Admin</a></li>
@@ -27,6 +32,25 @@
 		</div>
 	</div>
 
+	<div class="container">
+		<h1>Taxi Admin System</h1>
+
+
+		<h2>Requests</h2>
+		<div id="requestsTarget"></div>
+		<input type="button" onclick="getRequests()" value="Get requests">
+
+		
+
+		<h2>Assign</h2>
+		<div>
+			<label for="searchbox" class="assign-label">Booking: </label>
+			<input type="text" class="form-input" id="assignBox" required>
+
+			<input type="button" value="Assign" onclick="assignCab()">
+		</div>
+
+	</div>
 </body>
 
 </html>

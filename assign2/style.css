@@ -2,6 +2,10 @@
 	margin-right: 42px;
 }
 
+.assign-label {
+	padding-right: 10px;
+}
+
 .container {
 	width: 550px;
 	margin-right: auto;
@@ -48,7 +52,8 @@
 }
 
 .inner-nav ul {
-	margin: 0 auto 0 20px;
+	float:left;
+	margin: 0 0 0 20px;
 	-moz-padding-start: 0px;    
 	-webkit-padding-start: 0px; 
 	padding-left: 0px; /* removes annoying user-agent stylesheet ul padding */ 
@@ -70,10 +75,13 @@
 	color: gray;
 }
 
-.inner-nav p {
-	margin: 7px 0px;
+.title {
+	float: left;
+	padding: 7px 0px;
+	margin:0px;
 	color: white;
 	font-size: 30px;
+	line-height: 36px;
 	display: inline-block;
 }
 
