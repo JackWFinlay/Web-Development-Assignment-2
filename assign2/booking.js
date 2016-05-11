@@ -149,9 +149,10 @@ function validate(name, phone, unit, streetNumber, streetName, pickupSuburb, des
 	}
 
 	if (date.value.length > 0){
-		var re = /^\d{1,2}\/\d{1,2}\/\d{4}$/; 
+		var re = /^([0]?[1-9]|[1-2]\d|[3][0-1])\/([0]?[1-9]|[1][0-2])\/\d{4}$/; 
 		if (!re.test(date.value)){
 			valid = false;
+			dateValid = false;
 			date.classList.add("input-invalid");
 		} else {
 			var split = date.value.split('/');
