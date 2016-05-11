@@ -41,5 +41,7 @@
 	    }
 
 	    mysqli_free_result($resultSet);
+	} else {
+		echo "<p>No pickups due in the next two hours.</p>";
 	}
 ?>
