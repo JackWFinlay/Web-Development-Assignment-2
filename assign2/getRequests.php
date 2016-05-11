@@ -22,7 +22,7 @@
 	    	$pickupSuburb = $row['pickupSuburb'];
 	    	$destinationSuburb = $row['destinationSuburb'];
 	    	$pickupDate = date('d/m/Y', strtotime($row['pickupDateTime']));
-	    	$pickupTime = date('H:m', strtotime($row['pickupDateTime']));
+	    	$pickupTime = date('H:i', strtotime($row['pickupDateTime']));
 
 
 	        echo "<div class='requests'>
