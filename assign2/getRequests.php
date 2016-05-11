@@ -3,13 +3,13 @@
 
 	$connection = mysqli_connect($host, $user, $password, $dbname); // Create new DB connection.
 
-	$dateNow = date('Y-m-d H:m:s',strtotime('-2 hours'));
-	$date    = Date('Y-m-d H:m:s');
+	$dateFuture = date('Y-m-d H:m:s',strtotime('+2 hours'));
+	$dateNow   = date('Y-m-d H:m:s');
 
 	$query = "SELECT bookingID, customerName, customerPhone, pickupSuburb, destinationSuburb, pickupDateTime
 		FROM taxiBooking
 		WHERE bookingStatus = 'unassigned'
-		AND pickupDateTime BETWEEN '{$date}' AND '{$dateNow}'";
+		AND pickupDateTime BETWEEN '{$dateNow}' AND '{$dateFuture}'";
 
 	$resultSet = mysqli_query($connection, $query);
 
@@ -21,8 +21,8 @@
 	    	$customerPhone = $row['customerPhone'];
 	    	$pickupSuburb = $row['pickupSuburb'];
 	    	$destinationSuburb = $row['destinationSuburb'];
-	    	$pickupDate = date_format('d/m/Y', $row['pickupDateTime']);
-	    	$pickupTime = date_format('H:m', $row['pickupDateTime']);
+	    	$pickupDate = date('d/m/Y', strtotime($row['pickupDateTime']));
+	    	$pickupTime = date('H:m', strtotime($row['pickupDateTime']));
 
 
 	        echo "<div class='requests'>
