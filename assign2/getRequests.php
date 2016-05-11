@@ -44,4 +44,6 @@
 	} else {
 		echo "<p>No pickups due in the next two hours.</p>";
 	}
+
+	mysqli_close($connection);
 ?>

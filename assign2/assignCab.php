@@ -15,4 +15,6 @@
 		echo "<p>Booking ID not found.</p>";
 	}
 
+	mysqli_close($connection);
+
 ?>

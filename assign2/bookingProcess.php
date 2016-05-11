@@ -48,7 +48,7 @@
 
 	echo "<p>Thank you! Your booking reference number is $bookingID. You will be picked up in front of your provided address at $time on $date.</p>";
 
-
+	mysqli_close($connection);
 
 	
 ?>
