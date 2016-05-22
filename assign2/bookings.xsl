@@ -18,8 +18,8 @@
 
 
   <xsl:template name="DisplayBookings">  
-    <xsl:if test="count(//booking)>0">
-      <tr>
+    <xsl:if test="count(//booking) &gt; 0">
+      <tr class="table-header">
         <td>Booking ID</td>
         <td>Name</td>
         <td>Phone</td>
@@ -31,8 +31,10 @@
       </tr>
     </xsl:if>
 
-    <xsl:if test="count(//booking)=0">
-    	<tr>No bookings in the next 2 hours.</tr>
+    <xsl:if test="count(/bookings/*) = 0">
+    	<tr>
+    		<td col-span="8"><p>No bookings in the next 2 hours.</p></td>
+    	</tr>
     </xsl:if>
 
     <xsl:for-each select="//booking">
@@ -43,8 +45,8 @@
 	      		<xsl:otherwise>odd</xsl:otherwise>
 	    	</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="position">
-			<xsl:value-of select="position()"/>
+		<xsl:variable name="id">
+			<xsl:value-of select="id"/>
 		</xsl:variable>
 
 	  	<tr class="{$stripe-class}">
@@ -77,9 +79,10 @@
 	        </td>
 
 	        <td>
-	           <input type="button" onclick="Assign({$position})" value="Assign">
+	           <input type="button" onclick="assignCab({$id})" value="Assign"/>
 	        </td>
 		</tr>
     </xsl:for-each>
+    <br/>
   </xsl:template>
 </xsl:stylesheet>

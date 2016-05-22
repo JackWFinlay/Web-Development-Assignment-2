@@ -1,4 +1,5 @@
 <?php
+	header('Content-Type: text/xml'); // Return XML rather than HTML.
 	require_once 'settings.php';
 
 	$connection = mysqli_connect($host, $user, $password, $dbname); // Create new DB connection.
@@ -49,7 +50,7 @@
 	        $date = $booking->appendChild($doc->createElement('date'));
 	        $date->appendChild($doc->createTextNode($pickupDate));
 
-	        $time = $booking->appendChild($doc->createElement('phone'));
+	        $time = $booking->appendChild($doc->createElement('time'));
 	        $time->appendChild($doc->createTextNode($pickupTime));
 
 	    }

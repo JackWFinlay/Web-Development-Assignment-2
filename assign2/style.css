@@ -22,6 +22,15 @@
 	display: inline-block;
 }
 
+.even {
+	border-top: 1px #ddd solid;
+}
+
+.odd {
+	border-top: 1px #ddd solid;
+	background: #f9f9f9;
+}
+
 .form-group {
 	line-height: 24px;
 	margin-bottom: 5px;
@@ -73,6 +82,13 @@
 
 .inner-nav ul li a:hover {
 	color: gray;
+}
+
+.table-header {
+	font-weight: bold;
+	font-size: 12px;
+	border-bottom: 2px solid #ddd;
+	white-space: nowrap;
 }
 
 .title {
@@ -148,4 +164,14 @@ input[type="reset"]:hover {
 label {
 	font-weight: bold;
 	font-size: 12px;
+}
+
+table {
+	border-collapse: collapse;
+    border-spacing: 0;
+
+}
+
+td {
+	padding-right: 5px;
 }

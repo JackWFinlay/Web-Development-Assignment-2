@@ -38,6 +38,7 @@
 
 		<h2>Requests</h2>
 		<div id="requestsTarget"></div>
+		<br/>
 		<input type="button" onclick="getRequests()" value="Get requests"/>
 
 		
@@ -47,7 +48,7 @@
 			<label for="assignBox" class="assign-label">Booking: </label>
 			<input type="text" class="form-input" id="assignBox"/>
 
-			<input type="button" value="Assign" onclick="assignCab()"/>
+			<input type="button" value="Assign" onclick="assignCab(document.getElementById("assignBox").value)"/>
 		</div>
 		<div id="assignTarget"></div>
 
