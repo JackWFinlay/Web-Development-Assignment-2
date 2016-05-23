@@ -88,16 +88,6 @@ function validate(name, phone, unit, streetNumber, streetName, pickupSuburb, des
 		phone.classList.add("input-invalid");
 	}
 
-	if (unit.value.length > 0) {
-		var re = /^\d+$/;
-		if (!re.test(unit.value)) {
-			valid = false;
-			unit.classList.add("input-invalid");
-		} else {
-			unit.classList.remove("input-invalid");
-		}
-	} // Not else on this one as Unit is optional.
-
 	if(streetNumber.value.length > 0 ) {
 		var re = /^\d+$/;
 		if (!re.test(streetNumber.value)) {
@@ -179,7 +169,9 @@ function validate(name, phone, unit, streetNumber, streetName, pickupSuburb, des
 	}
 
 	if (timeValid && dateValid) {
-		if (Date.parse(date.value + " " + time.value + ":00") < Date.now()){ // Check date is in future or now
+		var split = date.value.split("/");
+		var formDate = Date.parse(dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]  +" " + time.value + ":00");
+		if (formDate < Date.now()){ // Check date is in future or now
 			valid = false;
 			date.classList.add("input-invalid");
 			time.classList.add("input-invalid");

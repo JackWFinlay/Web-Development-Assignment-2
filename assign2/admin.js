@@ -23,7 +23,7 @@ function getRequests() {
 				} else {
 					var xsltProcessor = new XSLTProcessor();
 
-					xsl = loadXMLDoc("bookings.xsl"); // Gets the xsl doc from the server.
+					xsl = loadXMLDoc("bookings.xsl"); // Gets the XSL doc from the server.
 					xsltProcessor.importStylesheet(xsl);
 
 					xml = xhr.responseXML;
@@ -52,6 +52,7 @@ function assignCab(bookingID) {
 		}
 		xhr.send(requestbody);
 	}
+	getRequests();
 }
 
 function loadXMLDoc(filename)

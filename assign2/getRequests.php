@@ -1,10 +1,11 @@
 <?php
+	date_default_timezone_set('Pacific/Auckland');
 	require_once 'settings.php';
 
 	$connection = mysqli_connect($host, $user, $password, $dbname); // Create new DB connection.
 
-	$dateFuture = date('Y-m-d H:m:s',strtotime('+2 hours'));
-	$dateNow   = date('Y-m-d H:m:s');
+	$dateFuture = date('Y-m-d H:i:s',strtotime('+2 hours'));
+	$dateNow   = date('Y-m-d H:i:s');
 
 	$query = "SELECT bookingID, customerName, customerPhone, pickupSuburb, destinationSuburb, pickupDateTime
 		FROM taxiBooking

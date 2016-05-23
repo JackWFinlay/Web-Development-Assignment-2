@@ -3,7 +3,7 @@ CREATE TABLE fhp0351.taxiBooking (
 	bookingStatus VARCHAR(50) NOT NULL,
 	customerName VARCHAR(50) NOT NULL,
 	customerPhone VARCHAR(15) NOT NULL,
-	unitNumber INT,
+	unitNumber VARCHAR(5),
 	streetNumber INT NOT NULL,
 	streetName VARCHAR(50) NOT NULL,
 	pickupSuburb VARCHAR(50) NOT NULL,
