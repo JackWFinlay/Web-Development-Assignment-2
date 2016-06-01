@@ -1,4 +1,13 @@
-// Jack Finlay 1399273 - 
+/*
+	ID: 1399273
+	This file is the javascript for the booking page.
+
+	Functions:
+		getData(): 		 Sends the form data to the BookingProccess.php page.
+		submitBooking(): Gets all form data on the page, calling validate() to validate it, and getData() to send it to the BookingProcess.php page to be processed.
+		validate(): 	 Validates all inputs on the form.
+
+*/ 
 
 function getData(dataSource, responseTarget, name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
 	var xhr = createRequest();
@@ -170,7 +179,7 @@ function validate(name, phone, unit, streetNumber, streetName, pickupSuburb, des
 
 	if (timeValid && dateValid) {
 		var split = date.value.split("/");
-		var formDate = Date.parse(dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]  +" " + time.value + ":00");
+		var formDate = Date.parse(split[2] + "-" + split[1] + "-" + split[0]  +" " + time.value + ":00");
 		if (formDate < Date.now()){ // Check date is in future or now
 			valid = false;
 			date.classList.add("input-invalid");

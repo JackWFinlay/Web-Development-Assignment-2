@@ -1,3 +1,8 @@
+/*
+	ID:1399273
+	The javascript to create an XHR request object.
+*/
+
 function createRequest() {
     var xhr = false;  
     if (window.XMLHttpRequest) {

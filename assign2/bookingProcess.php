@@ -1,4 +1,10 @@
 <?php 
+	/*
+		ID:1399273
+		The server-side backend of the booking process. Saves the reocrds to the database.
+	*/
+
+	date_default_timezone_set('Pacific/Auckland');
 	require_once 'settings.php';
 
 	$bookingStatus     = "unassigned";

@@ -1,4 +1,10 @@
 <?php
+	/*
+		ID:1399273
+		This file updates the booking specified by the bookingID passed to it by the assignCab() method in admin.js
+
+	*/
+
 	require_once 'settings.php';
 
 	$connection = mysqli_connect($host, $user, $password, $dbname);

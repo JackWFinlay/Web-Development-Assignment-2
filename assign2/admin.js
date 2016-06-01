@@ -1,3 +1,13 @@
+/*
+	ID:1399273
+	The javascript file for the admin portal page.
+	
+	Functions:
+		getRequests(): Gets the list of taxi bookings as XML and transforms it into a table via XSLT.
+		assignCab():   Sends an AJAX request with the bookingID of a booking to mark as assigned.
+		loadXMLDoc():  Loads the XSLT stylesheet to the client. 
+*/
+
 function getRequests() {
 	var xhr = createRequest();
 	if(xhr) {

@@ -1,4 +1,10 @@
 <?php
+	/*
+		ID:1399273
+		Gets the bookings for the next two hours and sends them as XML.
+	*/
+
+	date_default_timezone_set('Pacific/Auckland');
 	header('Content-Type: text/xml'); // Return XML rather than HTML.
 	require_once 'settings.php';
 
@@ -55,13 +61,13 @@
 
 	    }
 
-
-
-	    mysqli_free_result($resultSet);
 	} 
 
-	$xml = $doc->saveXML();
+	mysqli_free_result($resultSet);
 
+
+	$xml = $doc->saveXML();
+	
 	echo $xml;
 
 	mysqli_close($connection);
