@@ -5,7 +5,7 @@
 	Functions:
 		getRequests(): Gets the list of taxi bookings as XML and transforms it into a table via XSLT.
 		assignCab():   Sends an AJAX request with the bookingID of a booking to mark as assigned.
-		loadXMLDoc():  Loads the XSLT stylesheet to the client. 
+		loadXSLDoc():  Loads the XSLT stylesheet to the client. 
 */
 
 function getRequests() {
@@ -33,7 +33,7 @@ function getRequests() {
 				} else {
 					var xsltProcessor = new XSLTProcessor();
 
-					xsl = loadXMLDoc("bookings.xsl"); // Gets the XSL doc from the server.
+					xsl = loadXSLDoc("bookings.xsl"); // Gets the XSL doc from the server.
 					xsltProcessor.importStylesheet(xsl);
 
 					xml = xhr.responseXML;
@@ -65,18 +65,13 @@ function assignCab(bookingID) {
 	getRequests();
 }
 
-function loadXMLDoc(filename)
+function loadXSLDoc(filename)
 {
-	if (window.ActiveXObject)
-  	{
-  		xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-	} else {
-		xhttp = new XMLHttpRequest();
-	}
+	var xhr = createRequest();
 
-	xhttp.open("GET", filename, false);
+	xhr.open("GET", filename, false);
 
-	try {xhttp.responseType = "msxml-document"} catch(err) {} // Helping IE11
-	xhttp.send("");
-	return xhttp.responseXML;
+	xhr.send(null);
+	
+	return xhr.responseXML;
 }
