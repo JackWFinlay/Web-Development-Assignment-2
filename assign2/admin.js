@@ -48,6 +48,10 @@ function getRequests() {
 }
 
 function assignCab(bookingID) {
+	if (bookingID == ""){ // Check the value is not blank.
+		return;
+	}
+
 	var xhr = createRequest();
 	if(xhr) {
 		var responseTargetDiv = document.getElementById("assignTarget");

@@ -10,8 +10,9 @@
 
 	$connection = mysqli_connect($host, $user, $password, $dbname); // Create new DB connection.
 
-	$dateFuture = date('Y-m-d H:i:s',strtotime('+2 hours'));
-	$dateNow   = date('Y-m-d H:i:s');
+	$dateNow    = date('Y-m-d H:i:s');
+	$dateFuture = date('Y-m-d H:i:s',strtotime('+2 hours')); // Adds 2 hours to current date.
+	
 
 	$query = "SELECT bookingID, customerName, customerPhone, pickupSuburb, destinationSuburb, pickupDateTime
 		FROM taxiBooking

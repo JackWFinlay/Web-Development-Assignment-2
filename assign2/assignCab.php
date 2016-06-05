@@ -11,15 +11,27 @@
 
 	$bookingID = mysqli_escape_string($connection, $_POST["bookingID"]); //Get booking ID from post request, sanitising it first.
 
-	$query = "UPDATE taxiBooking 
-				SET bookingStatus = 'assigned' 
-				WHERE bookingID = $bookingID";
+	$bookingExistsQuery = "SELECT * FROM taxiBooking 
+							WHERE bookingID = $bookingID";
 
-	if (mysqli_query($connection, $query)) {
-		echo "<p>The booking request $bookingID has been properly assigned.</p>";
+	$resultSet = mysqli_query($connection, $bookingExistsQuery);
+
+	if ((mysqli_num_rows($resultSet)) > 0){
+		
+		$query = "UPDATE taxiBooking 
+					SET bookingStatus = 'assigned' 
+					WHERE bookingID = $bookingID";
+
+		if (mysqli_query($connection, $query)) {
+			echo "<p>The booking request $bookingID has been properly assigned.</p>";
+		} else {
+			echo "<p>Booking ID not found.</p>";
+		}	
 	} else {
 		echo "<p>Booking ID not found.</p>";
 	}
+
+	mysqli_free_result($resultSet);
 
 	mysqli_close($connection);
 

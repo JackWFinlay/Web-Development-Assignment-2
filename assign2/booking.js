@@ -3,13 +3,42 @@
 	This file is the javascript for the booking page.
 
 	Functions:
-		getData(): 		 Sends the form data to the BookingProccess.php page.
-		submitBooking(): Gets all form data on the page, calling validate() to validate it, and getData() to send it to the BookingProcess.php page to be processed.
+		sendData():      Sends the form data to the BookingProccess.php page.
+		submitBooking(): Gets all form data on the page, calling validate() to validate it, and sendData() to send it to the BookingProcess.php page to be processed.
 		validate(): 	 Validates all inputs on the form.
 
 */ 
+	
+window.onload = function () {
+	var time = document.getElementById("time");
+	var date = document.getElementById("date");
 
-function getData(dataSource, responseTarget, name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
+	time.addEventListener("click", function (){
+		if (this.value === "HH:MM"){
+			this.value = "";
+		}
+	});
+
+	time.addEventListener("blur", function (){
+		if (this.value === ""){
+			this.value = "HH:MM";
+		}
+	});
+
+	date.addEventListener("click", function (){
+		if (this.value === "DD/MM/YYYY"){
+			this.value = "";
+		}
+	});
+
+	date.addEventListener("blur", function (){
+		if (this.value === ""){
+			this.value = "DD/MM/YYYY";
+		}
+	});
+};
+
+function sendData(dataSource, responseTarget, name, phone, unit, streetNumber, streetName, pickupSuburb, destinationSuburb, time, date) {
 	var xhr = createRequest();
 	if(xhr) {
 		var responseTargetDiv = document.getElementById(responseTarget);
@@ -54,7 +83,7 @@ function submitBooking() {
 		return; // Skip the rest of the function.
 	}
 
-	getData("bookingProcess.php"
+	sendData("bookingProcess.php"
 			,"responseTarget"
 			,name.value
 			,phone.value

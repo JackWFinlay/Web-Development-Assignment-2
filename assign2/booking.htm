@@ -1,9 +1,9 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 	ID:1399273
 	This file is the html file for the booking page.
 
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
@@ -81,16 +81,15 @@
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Pick-up time:</label>
-					<input type="text" name="time" class="form-input" id="time" placeholder="HH:MM" /><br/>
+					<input type="text" name="time" class="form-input" id="time" value="HH:MM" maxlength="5" /><br/>
 				</div>
 
 				<div class="form-group">
 					<label class="form-label"><span class="required-asterisk">*</span>Pick-up date:</label>
-					<input type="text" name="date" class="form-input" id="date" placeholder="DD/MM/YYYY" /><br/>
+					<input type="text" name="date" class="form-input" id="date" value="DD/MM/YYYY" maxlength="10" /><br/>
 				</div>
 
 				
-
 				<div class="pull-right align-form-buttons">
 					<input type="button" value="Book" class="display-inline" id="submit" onclick="submitBooking()"/>
 					<input type="reset" value="Reset" onclick="resetWarnings()" class="display-inline"/>
